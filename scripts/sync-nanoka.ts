@@ -109,15 +109,34 @@ async function mapConcurrent<T>(items: string[], concurrency: number, mapper: (i
 }
 
 function toCharacterSummary(id: string, character: CharacterIndex[string]): CharacterSummary {
+  const path = PATH_MAP[character.baseType] ?? "Unknown";
+
   return {
     id,
-    name: character[LANG],
+    name: character[LANG] === "{NICKNAME}" ? `Trailblazer (${path})` : character[LANG],
     rarity: RARITY_MAP[character.rank],
-    path: PATH_MAP[character.baseType] ?? "Unknown",
+    path,
     element: DAMAGE_TYPE_MAP[character.damageType] ?? "Physical",
     icon: `https://static.nanoka.cc/assets/hsr/gridfight/icon/${id}.webp`,
     release: character.release,
   };
+}
+
+function dedupeTrailblazerPaths(characters: CharacterSummary[]) {
+  const trailblazerPaths = new Set<CharacterSummary["path"]>();
+
+  return characters.filter((character) => {
+    if (!character.name.startsWith("Trailblazer (")) {
+      return true;
+    }
+
+    if (trailblazerPaths.has(character.path)) {
+      return false;
+    }
+
+    trailblazerPaths.add(character.path);
+    return true;
+  });
 }
 
 async function main() {
@@ -132,7 +151,9 @@ async function main() {
 
   const characterIds = Object.keys(characterIndex);
   const lightconeIds = Object.keys(lightconeIndex);
-  const characters = Object.entries(characterIndex).map(([id, character]) => toCharacterSummary(id, character));
+  const characters = dedupeTrailblazerPaths(
+    Object.entries(characterIndex).map(([id, character]) => toCharacterSummary(id, character)),
+  );
 
   await Promise.all([
     writeJson(join(rootDir, "data", "characters.json"), characters),

@@ -1,14 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import bannersData from "../../../data/banners.json";
 import charactersData from "../../../data/characters.json";
-import type { Banner, CharacterSummary, DamageType } from "../../lib/types/hsr";
+import type { CharacterSummary, DamageType } from "../../lib/types/hsr";
 import { calculateWishlistPlan, HARD_PITY } from "./calculations";
 import { useGachaPlannerStore } from "./store";
 
 const characters = charactersData as CharacterSummary[];
-const banners = bannersData as Banner[];
+const fiveStarCharacters = characters.filter((character) => character.rarity === 5);
 
 const elements: Array<"all" | DamageType> = [
   "all",
@@ -23,7 +22,6 @@ const elements: Array<"all" | DamageType> = [
 
 export function GachaPlanner() {
   const [search, setSearch] = useState("");
-  const [rarityFilter, setRarityFilter] = useState<"all" | "4" | "5">("all");
   const [elementFilter, setElementFilter] = useState<(typeof elements)[number]>("all");
 
   const ownedCharacterIds = useGachaPlannerStore((state) => state.ownedCharacterIds);
@@ -40,21 +38,20 @@ export function GachaPlanner() {
 
   const ownedSet = new Set(ownedCharacterIds);
   const wishlistSet = new Set(wishlistCharacterIds);
-  const wishlistCharacters = characters.filter((character) => wishlistSet.has(character.id));
-  const fiveStarWishlist = wishlistCharacters.filter((character) => character.rarity === 5);
+  const ownedFiveStarCount = fiveStarCharacters.filter((character) => ownedSet.has(character.id)).length;
+  const wishlistCharacters = fiveStarCharacters.filter((character) => wishlistSet.has(character.id));
   const plan = calculateWishlistPlan({
-    targetCount: fiveStarWishlist.length,
+    targetCount: wishlistCharacters.length,
     currentTickets,
     pity,
     guaranteed,
   });
 
-  const filteredCharacters = characters.filter((character) => {
+  const filteredCharacters = fiveStarCharacters.filter((character) => {
     const matchesSearch = character.name.toLowerCase().includes(search.toLowerCase().trim());
-    const matchesRarity = rarityFilter === "all" || character.rarity === Number(rarityFilter);
     const matchesElement = elementFilter === "all" || character.element === elementFilter;
 
-    return matchesSearch && matchesRarity && matchesElement;
+    return matchesSearch && matchesElement;
   });
 
   return (
@@ -70,7 +67,7 @@ export function GachaPlanner() {
               </p>
             </div>
             <div className="grid grid-cols-3 gap-3 text-center">
-              <SummaryCard label="Roster" value={`${ownedSet.size}/${characters.length}`} />
+              <SummaryCard label="Roster" value={`${ownedFiveStarCount}/${fiveStarCharacters.length}`} />
               <SummaryCard label="Wishlist" value={wishlistCharacters.length.toString()} />
               <SummaryCard label="Tickets" value={currentTickets.toString()} />
             </div>
@@ -87,48 +84,36 @@ export function GachaPlanner() {
             setGuaranteed={setGuaranteed}
             resetPlanner={resetPlanner}
           />
-          <PlanSummary targetCount={fiveStarWishlist.length} plan={plan} />
+          <PlanSummary targetCount={wishlistCharacters.length} plan={plan} />
         </section>
 
-        <section className="grid gap-4 lg:grid-cols-2">
-          {banners.map((banner) => (
-            <article key={banner.id} className="rounded-2xl border border-white/10 bg-slate-950/55 p-5">
-              <div className="flex items-center justify-between gap-3">
-                <div>
-                  <p className="text-xs uppercase tracking-[0.25em] text-slate-400">{banner.patch}</p>
-                  <h2 className="mt-1 text-xl font-bold">{banner.name}</h2>
-                </div>
-                <span className="rounded-full border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 text-xs font-semibold uppercase text-cyan-100">
-                  {banner.status === "current" ? "actual" : "rumor"}
-                </span>
-              </div>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {banner.featuredCharacterIds.map((characterId) => {
-                  const character = characters.find((item) => item.id === characterId);
-                  return character ? <CharacterPill key={character.id} character={character} /> : null;
-                })}
-              </div>
-            </article>
-          ))}
+        <section className="rounded-3xl border border-white/10 bg-slate-950/55 p-5">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <p className="text-xs uppercase tracking-[0.25em] text-slate-400">Objetivos</p>
+              <h2 className="mt-1 text-xl font-bold">Personajes en wishlist</h2>
+            </div>
+            <span className="rounded-full border border-fuchsia-300/30 bg-fuchsia-300/10 px-3 py-1 text-xs font-semibold uppercase text-fuchsia-100">
+              {wishlistCharacters.length} seleccionados
+            </span>
+          </div>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {wishlistCharacters.length > 0 ? (
+              wishlistCharacters.map((character) => <CharacterPill key={character.id} character={character} />)
+            ) : (
+              <p className="text-sm text-slate-400">Añade personajes de 5 estrellas con el botón Quiero para verlos aquí.</p>
+            )}
+          </div>
         </section>
 
         <section className="rounded-3xl border border-white/10 bg-white/[0.07] p-4 shadow-2xl shadow-black/20 backdrop-blur sm:p-6">
-          <div className="grid gap-3 md:grid-cols-[1fr_10rem_12rem]">
+          <div className="grid gap-3 md:grid-cols-[1fr_12rem]">
             <input
               className="rounded-2xl border border-white/10 bg-slate-950/70 px-4 py-3 text-sm outline-none ring-cyan-300/40 placeholder:text-slate-500 focus:ring-2"
               placeholder="Buscar personaje"
               value={search}
               onChange={(event) => setSearch(event.target.value)}
             />
-            <select
-              className="rounded-2xl border border-white/10 bg-slate-950/70 px-4 py-3 text-sm outline-none ring-cyan-300/40 focus:ring-2"
-              value={rarityFilter}
-              onChange={(event) => setRarityFilter(event.target.value as typeof rarityFilter)}
-            >
-              <option value="all">Todas</option>
-              <option value="5">5 estrellas</option>
-              <option value="4">4 estrellas</option>
-            </select>
             <select
               className="rounded-2xl border border-white/10 bg-slate-950/70 px-4 py-3 text-sm outline-none ring-cyan-300/40 focus:ring-2"
               value={elementFilter}
