@@ -1,0 +1,626 @@
+{
+  "acheron_icon": {
+    "key": "acheron_icon",
+    "filename": "acheron_icon.webp",
+    "localUrl": "/icons/acheron_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/acheron_icon.webp"
+  },
+  "aglaea_icon": {
+    "key": "aglaea_icon",
+    "filename": "aglaea_icon.webp",
+    "localUrl": "/icons/aglaea_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/aglaea_icon.webp"
+  },
+  "anaxa_icon": {
+    "key": "anaxa_icon",
+    "filename": "anaxa_icon.webp",
+    "localUrl": "/icons/anaxa_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/anaxa_icon.webp"
+  },
+  "archer_icon": {
+    "key": "archer_icon",
+    "filename": "archer_icon.webp",
+    "localUrl": "/icons/archer_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/archer_icon.webp"
+  },
+  "argenti_icon": {
+    "key": "argenti_icon",
+    "filename": "argenti_icon.webp",
+    "localUrl": "/icons/argenti_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/argenti_icon.webp"
+  },
+  "arlan_icon": {
+    "key": "arlan_icon",
+    "filename": "arlan_icon.webp",
+    "localUrl": "/icons/arlan_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/arlan_icon.webp"
+  },
+  "ashveil_icon": {
+    "key": "ashveil_icon",
+    "filename": "ashveil_icon.webp",
+    "localUrl": "/icons/ashveil_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/ashveil_icon.webp"
+  },
+  "asta_icon": {
+    "key": "asta_icon",
+    "filename": "asta_icon.webp",
+    "localUrl": "/icons/asta_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/asta_icon.webp"
+  },
+  "aventurine_icon": {
+    "key": "aventurine_icon",
+    "filename": "aventurine_icon.webp",
+    "localUrl": "/icons/aventurine_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/aventurine_icon.webp"
+  },
+  "bailu_icon": {
+    "key": "bailu_icon",
+    "filename": "bailu_icon.webp",
+    "localUrl": "/icons/bailu_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/bailu_icon.webp"
+  },
+  "black-swan_icon": {
+    "key": "black-swan_icon",
+    "filename": "black-swan_icon.webp",
+    "localUrl": "/icons/black-swan_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/black-swan_icon.webp"
+  },
+  "blade-mortenax_icon": {
+    "key": "blade-mortenax_icon",
+    "filename": "blade-mortenax_icon.webp",
+    "localUrl": "/icons/blade-mortenax_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/blade-mortenax_icon.webp"
+  },
+  "blade_icon": {
+    "key": "blade_icon",
+    "filename": "blade_icon.webp",
+    "localUrl": "/icons/blade_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/blade_icon.webp"
+  },
+  "boothill_icon": {
+    "key": "boothill_icon",
+    "filename": "boothill_icon.webp",
+    "localUrl": "/icons/boothill_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/boothill_icon.webp"
+  },
+  "bronya_icon": {
+    "key": "bronya_icon",
+    "filename": "bronya_icon.webp",
+    "localUrl": "/icons/bronya_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/bronya_icon.webp"
+  },
+  "castorice_icon": {
+    "key": "castorice_icon",
+    "filename": "castorice_icon.webp",
+    "localUrl": "/icons/castorice_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/castorice_icon.webp"
+  },
+  "cerydra_icon": {
+    "key": "cerydra_icon",
+    "filename": "cerydra_icon.webp",
+    "localUrl": "/icons/cerydra_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/cerydra_icon.webp"
+  },
+  "cipher_icon": {
+    "key": "cipher_icon",
+    "filename": "cipher_icon.webp",
+    "localUrl": "/icons/cipher_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/cipher_icon.webp"
+  },
+  "clara_icon": {
+    "key": "clara_icon",
+    "filename": "clara_icon.webp",
+    "localUrl": "/icons/clara_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/clara_icon.webp"
+  },
+  "cyrene_icon": {
+    "key": "cyrene_icon",
+    "filename": "cyrene_icon.webp",
+    "localUrl": "/icons/cyrene_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/cyrene_icon.webp"
+  },
+  "dan-heng-permansor-terrae_icon": {
+    "key": "dan-heng-permansor-terrae_icon",
+    "filename": "dan-heng-permansor-terrae_icon.webp",
+    "localUrl": "/icons/dan-heng-permansor-terrae_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/dan-heng-permansor-terrae_icon.webp"
+  },
+  "dan-heng_icon": {
+    "key": "dan-heng_icon",
+    "filename": "dan-heng_icon.webp",
+    "localUrl": "/icons/dan-heng_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/dan-heng_icon.webp"
+  },
+  "dr-ratio_icon": {
+    "key": "dr-ratio_icon",
+    "filename": "dr-ratio_icon.webp",
+    "localUrl": "/icons/dr-ratio_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/dr-ratio_icon.webp"
+  },
+  "ele_fire": {
+    "key": "ele_fire",
+    "filename": "ele_fire.webp",
+    "localUrl": "/icons/ele_fire.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/ele_fire.webp"
+  },
+  "ele_ice": {
+    "key": "ele_ice",
+    "filename": "ele_ice.webp",
+    "localUrl": "/icons/ele_ice.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/ele_ice.webp"
+  },
+  "ele_imaginary": {
+    "key": "ele_imaginary",
+    "filename": "ele_imaginary.webp",
+    "localUrl": "/icons/ele_imaginary.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/ele_imaginary.webp"
+  },
+  "ele_lightning": {
+    "key": "ele_lightning",
+    "filename": "ele_lightning.webp",
+    "localUrl": "/icons/ele_lightning.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/ele_lightning.webp"
+  },
+  "ele_physical": {
+    "key": "ele_physical",
+    "filename": "ele_physical.webp",
+    "localUrl": "/icons/ele_physical.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/ele_physical.webp"
+  },
+  "ele_quantum": {
+    "key": "ele_quantum",
+    "filename": "ele_quantum.webp",
+    "localUrl": "/icons/ele_quantum.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/ele_quantum.webp"
+  },
+  "ele_wind": {
+    "key": "ele_wind",
+    "filename": "ele_wind.webp",
+    "localUrl": "/icons/ele_wind.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/ele_wind.webp"
+  },
+  "evanescia_icon": {
+    "key": "evanescia_icon",
+    "filename": "evanescia_icon.webp",
+    "localUrl": "/icons/evanescia_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/evanescia_icon.webp"
+  },
+  "feixiao_icon": {
+    "key": "feixiao_icon",
+    "filename": "feixiao_icon.webp",
+    "localUrl": "/icons/feixiao_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/feixiao_icon.webp"
+  },
+  "firefly_icon": {
+    "key": "firefly_icon",
+    "filename": "firefly_icon.webp",
+    "localUrl": "/icons/firefly_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/firefly_icon.webp"
+  },
+  "fu-xuan_icon": {
+    "key": "fu-xuan_icon",
+    "filename": "fu-xuan_icon.webp",
+    "localUrl": "/icons/fu-xuan_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/fu-xuan_icon.webp"
+  },
+  "gallagher_icon": {
+    "key": "gallagher_icon",
+    "filename": "gallagher_icon.webp",
+    "localUrl": "/icons/gallagher_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/gallagher_icon.webp"
+  },
+  "gepard_icon": {
+    "key": "gepard_icon",
+    "filename": "gepard_icon.webp",
+    "localUrl": "/icons/gepard_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/gepard_icon.webp"
+  },
+  "guinaifen_icon": {
+    "key": "guinaifen_icon",
+    "filename": "guinaifen_icon.webp",
+    "localUrl": "/icons/guinaifen_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/guinaifen_icon.webp"
+  },
+  "hanya_icon": {
+    "key": "hanya_icon",
+    "filename": "hanya_icon.webp",
+    "localUrl": "/icons/hanya_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/hanya_icon.webp"
+  },
+  "herta_icon": {
+    "key": "herta_icon",
+    "filename": "herta_icon.webp",
+    "localUrl": "/icons/herta_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/herta_icon.webp"
+  },
+  "himeko-nova_icon": {
+    "key": "himeko-nova_icon",
+    "filename": "himeko-nova_icon.webp",
+    "localUrl": "/icons/himeko-nova_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/himeko-nova_icon.webp"
+  },
+  "himeko_icon": {
+    "key": "himeko_icon",
+    "filename": "himeko_icon.webp",
+    "localUrl": "/icons/himeko_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/himeko_icon.webp"
+  },
+  "hook_icon": {
+    "key": "hook_icon",
+    "filename": "hook_icon.webp",
+    "localUrl": "/icons/hook_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/hook_icon.webp"
+  },
+  "huohuo_icon": {
+    "key": "huohuo_icon",
+    "filename": "huohuo_icon.webp",
+    "localUrl": "/icons/huohuo_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/huohuo_icon.webp"
+  },
+  "hyacine_icon": {
+    "key": "hyacine_icon",
+    "filename": "hyacine_icon.webp",
+    "localUrl": "/icons/hyacine_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/hyacine_icon.webp"
+  },
+  "hysilens_icon": {
+    "key": "hysilens_icon",
+    "filename": "hysilens_icon.webp",
+    "localUrl": "/icons/hysilens_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/hysilens_icon.webp"
+  },
+  "imbibitor-lunae_icon": {
+    "key": "imbibitor-lunae_icon",
+    "filename": "imbibitor-lunae_icon.webp",
+    "localUrl": "/icons/imbibitor-lunae_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/imbibitor-lunae_icon.webp"
+  },
+  "jade_icon": {
+    "key": "jade_icon",
+    "filename": "jade_icon.webp",
+    "localUrl": "/icons/jade_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/jade_icon.webp"
+  },
+  "jiaoqiu_icon": {
+    "key": "jiaoqiu_icon",
+    "filename": "jiaoqiu_icon.webp",
+    "localUrl": "/icons/jiaoqiu_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/jiaoqiu_icon.webp"
+  },
+  "jing-yuan_icon": {
+    "key": "jing-yuan_icon",
+    "filename": "jing-yuan_icon.webp",
+    "localUrl": "/icons/jing-yuan_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/jing-yuan_icon.webp"
+  },
+  "jingliu_icon": {
+    "key": "jingliu_icon",
+    "filename": "jingliu_icon.webp",
+    "localUrl": "/icons/jingliu_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/jingliu_icon.webp"
+  },
+  "kafka_icon": {
+    "key": "kafka_icon",
+    "filename": "kafka_icon.webp",
+    "localUrl": "/icons/kafka_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/kafka_icon.webp"
+  },
+  "lingsha_icon": {
+    "key": "lingsha_icon",
+    "filename": "lingsha_icon.webp",
+    "localUrl": "/icons/lingsha_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/lingsha_icon.webp"
+  },
+  "luka_icon": {
+    "key": "luka_icon",
+    "filename": "luka_icon.webp",
+    "localUrl": "/icons/luka_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/luka_icon.webp"
+  },
+  "luocha_icon": {
+    "key": "luocha_icon",
+    "filename": "luocha_icon.webp",
+    "localUrl": "/icons/luocha_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/luocha_icon.webp"
+  },
+  "lynx_icon": {
+    "key": "lynx_icon",
+    "filename": "lynx_icon.webp",
+    "localUrl": "/icons/lynx_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/lynx_icon.webp"
+  },
+  "march-7th-evernight_icon": {
+    "key": "march-7th-evernight_icon",
+    "filename": "march-7th-evernight_icon.webp",
+    "localUrl": "/icons/march-7th-evernight_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/march-7th-evernight_icon.webp"
+  },
+  "march-7th-swordmaster_icon": {
+    "key": "march-7th-swordmaster_icon",
+    "filename": "march-7th-swordmaster_icon.webp",
+    "localUrl": "/icons/march-7th-swordmaster_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/march-7th-swordmaster_icon.webp"
+  },
+  "march-7th_icon": {
+    "key": "march-7th_icon",
+    "filename": "march-7th_icon.webp",
+    "localUrl": "/icons/march-7th_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/march-7th_icon.webp"
+  },
+  "misha_icon": {
+    "key": "misha_icon",
+    "filename": "misha_icon.webp",
+    "localUrl": "/icons/misha_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/misha_icon.webp"
+  },
+  "moze_icon": {
+    "key": "moze_icon",
+    "filename": "moze_icon.webp",
+    "localUrl": "/icons/moze_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/moze_icon.webp"
+  },
+  "mydei_icon": {
+    "key": "mydei_icon",
+    "filename": "mydei_icon.webp",
+    "localUrl": "/icons/mydei_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/mydei_icon.webp"
+  },
+  "natasha_icon": {
+    "key": "natasha_icon",
+    "filename": "natasha_icon.webp",
+    "localUrl": "/icons/natasha_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/natasha_icon.webp"
+  },
+  "path_abundance": {
+    "key": "path_abundance",
+    "filename": "path_abundance.webp",
+    "localUrl": "/icons/path_abundance.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/path_abundance.webp"
+  },
+  "path_destruction": {
+    "key": "path_destruction",
+    "filename": "path_destruction.webp",
+    "localUrl": "/icons/path_destruction.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/path_destruction.webp"
+  },
+  "path_elation": {
+    "key": "path_elation",
+    "filename": "path_elation.webp",
+    "localUrl": "/icons/path_elation.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/path_elation.webp"
+  },
+  "path_erudition": {
+    "key": "path_erudition",
+    "filename": "path_erudition.webp",
+    "localUrl": "/icons/path_erudition.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/path_erudition.webp"
+  },
+  "path_harmony": {
+    "key": "path_harmony",
+    "filename": "path_harmony.webp",
+    "localUrl": "/icons/path_harmony.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/path_harmony.webp"
+  },
+  "path_hunt": {
+    "key": "path_hunt",
+    "filename": "path_hunt.webp",
+    "localUrl": "/icons/path_hunt.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/path_hunt.webp"
+  },
+  "path_nihility": {
+    "key": "path_nihility",
+    "filename": "path_nihility.webp",
+    "localUrl": "/icons/path_nihility.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/path_nihility.webp"
+  },
+  "path_preservation": {
+    "key": "path_preservation",
+    "filename": "path_preservation.webp",
+    "localUrl": "/icons/path_preservation.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/path_preservation.webp"
+  },
+  "path_remem": {
+    "key": "path_remem",
+    "filename": "path_remem.webp",
+    "localUrl": "/icons/path_remem.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/path_remem.webp"
+  },
+  "pela_icon": {
+    "key": "pela_icon",
+    "filename": "pela_icon.webp",
+    "localUrl": "/icons/pela_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/pela_icon.webp"
+  },
+  "phainon_icon": {
+    "key": "phainon_icon",
+    "filename": "phainon_icon.webp",
+    "localUrl": "/icons/phainon_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/phainon_icon.webp"
+  },
+  "qingque_icon": {
+    "key": "qingque_icon",
+    "filename": "qingque_icon.webp",
+    "localUrl": "/icons/qingque_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/qingque_icon.webp"
+  },
+  "rappa_icon": {
+    "key": "rappa_icon",
+    "filename": "rappa_icon.webp",
+    "localUrl": "/icons/rappa_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/rappa_icon.webp"
+  },
+  "robin_icon": {
+    "key": "robin_icon",
+    "filename": "robin_icon.webp",
+    "localUrl": "/icons/robin_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/robin_icon.webp"
+  },
+  "ruan-mei_icon": {
+    "key": "ruan-mei_icon",
+    "filename": "ruan-mei_icon.webp",
+    "localUrl": "/icons/ruan-mei_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/ruan-mei_icon.webp"
+  },
+  "saber_icon": {
+    "key": "saber_icon",
+    "filename": "saber_icon.webp",
+    "localUrl": "/icons/saber_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/saber_icon.webp"
+  },
+  "sampo_icon": {
+    "key": "sampo_icon",
+    "filename": "sampo_icon.webp",
+    "localUrl": "/icons/sampo_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/sampo_icon.webp"
+  },
+  "seele_icon": {
+    "key": "seele_icon",
+    "filename": "seele_icon.webp",
+    "localUrl": "/icons/seele_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/seele_icon.webp"
+  },
+  "serval_icon": {
+    "key": "serval_icon",
+    "filename": "serval_icon.webp",
+    "localUrl": "/icons/serval_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/serval_icon.webp"
+  },
+  "silver-wolf-lv-999_icon": {
+    "key": "silver-wolf-lv-999_icon",
+    "filename": "silver-wolf-lv-999_icon.webp",
+    "localUrl": "/icons/silver-wolf-lv-999_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/silver-wolf-lv-999_icon.webp"
+  },
+  "silver-wolf_icon": {
+    "key": "silver-wolf_icon",
+    "filename": "silver-wolf_icon.webp",
+    "localUrl": "/icons/silver-wolf_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/silver-wolf_icon.webp"
+  },
+  "sparkle_icon": {
+    "key": "sparkle_icon",
+    "filename": "sparkle_icon.webp",
+    "localUrl": "/icons/sparkle_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/sparkle_icon.webp"
+  },
+  "sparxie_icon": {
+    "key": "sparxie_icon",
+    "filename": "sparxie_icon.webp",
+    "localUrl": "/icons/sparxie_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/sparxie_icon.webp"
+  },
+  "sunday_icon": {
+    "key": "sunday_icon",
+    "filename": "sunday_icon.webp",
+    "localUrl": "/icons/sunday_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/sunday_icon.webp"
+  },
+  "sushang_icon": {
+    "key": "sushang_icon",
+    "filename": "sushang_icon.webp",
+    "localUrl": "/icons/sushang_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/sushang_icon.webp"
+  },
+  "the-dahlia_icon": {
+    "key": "the-dahlia_icon",
+    "filename": "the-dahlia_icon.webp",
+    "localUrl": "/icons/the-dahlia_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/the-dahlia_icon.webp"
+  },
+  "the-herta_icon": {
+    "key": "the-herta_icon",
+    "filename": "the-herta_icon.webp",
+    "localUrl": "/icons/the-herta_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/the-herta_icon.webp"
+  },
+  "tingyun-fugue_icon": {
+    "key": "tingyun-fugue_icon",
+    "filename": "tingyun-fugue_icon.webp",
+    "localUrl": "/icons/tingyun-fugue_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/tingyun-fugue_icon.webp"
+  },
+  "tingyun_icon": {
+    "key": "tingyun_icon",
+    "filename": "tingyun_icon.webp",
+    "localUrl": "/icons/tingyun_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/tingyun_icon.webp"
+  },
+  "topaz_icon": {
+    "key": "topaz_icon",
+    "filename": "topaz_icon.webp",
+    "localUrl": "/icons/topaz_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/topaz_icon.webp"
+  },
+  "trailblazer-destruction_icon": {
+    "key": "trailblazer-destruction_icon",
+    "filename": "trailblazer-destruction_icon.webp",
+    "localUrl": "/icons/trailblazer-destruction_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/trailblazer-destruction_icon.webp"
+  },
+  "trailblazer-elation_icon": {
+    "key": "trailblazer-elation_icon",
+    "filename": "trailblazer-elation_icon.webp",
+    "localUrl": "/icons/trailblazer-elation_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/trailblazer-elation_icon.webp"
+  },
+  "trailblazer-harmony_icon": {
+    "key": "trailblazer-harmony_icon",
+    "filename": "trailblazer-harmony_icon.webp",
+    "localUrl": "/icons/trailblazer-harmony_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/trailblazer-harmony_icon.webp"
+  },
+  "trailblazer-preservation_icon": {
+    "key": "trailblazer-preservation_icon",
+    "filename": "trailblazer-preservation_icon.webp",
+    "localUrl": "/icons/trailblazer-preservation_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/trailblazer-preservation_icon.webp"
+  },
+  "trailblazer-remembrance_icon": {
+    "key": "trailblazer-remembrance_icon",
+    "filename": "trailblazer-remembrance_icon.webp",
+    "localUrl": "/icons/trailblazer-remembrance_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/trailblazer-remembrance_icon.webp"
+  },
+  "tribbie_icon": {
+    "key": "tribbie_icon",
+    "filename": "tribbie_icon.webp",
+    "localUrl": "/icons/tribbie_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/tribbie_icon.webp"
+  },
+  "welt_icon": {
+    "key": "welt_icon",
+    "filename": "welt_icon.webp",
+    "localUrl": "/icons/welt_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/welt_icon.webp"
+  },
+  "xueyi_icon": {
+    "key": "xueyi_icon",
+    "filename": "xueyi_icon.webp",
+    "localUrl": "/icons/xueyi_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/xueyi_icon.webp"
+  },
+  "yanqing_icon": {
+    "key": "yanqing_icon",
+    "filename": "yanqing_icon.webp",
+    "localUrl": "/icons/yanqing_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/yanqing_icon.webp"
+  },
+  "yao-guang_icon": {
+    "key": "yao-guang_icon",
+    "filename": "yao-guang_icon.webp",
+    "localUrl": "/icons/yao-guang_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/yao-guang_icon.webp"
+  },
+  "yukong_icon": {
+    "key": "yukong_icon",
+    "filename": "yukong_icon.webp",
+    "localUrl": "/icons/yukong_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/yukong_icon.webp"
+  },
+  "yunli_icon": {
+    "key": "yunli_icon",
+    "filename": "yunli_icon.webp",
+    "localUrl": "/icons/yunli_icon.webp",
+    "cdnUrl": "https://cdn.luislluy.ovh/icons/yunli_icon.webp"
+  }
+}
