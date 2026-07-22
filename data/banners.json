@@ -1,0 +1,16 @@
+[
+  {
+    "id": "phase-1-sample",
+    "name": "Objetivo inmediato",
+    "patch": "Fase 1",
+    "status": "current",
+    "featuredCharacterIds": ["1102", "1005"]
+  },
+  {
+    "id": "rumored-sample",
+    "name": "Próximos / rumoreados",
+    "patch": "Próximo parche",
+    "status": "rumored",
+    "featuredCharacterIds": ["1006", "1101"]
+  }
+]

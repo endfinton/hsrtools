@@ -5,17 +5,30 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "icons:link": "tsx scripts/link-icons.ts",
+    "icons:cloudflare": "tsx scripts/upload-cloudflare-images.ts",
+    "sync:nanoka": "tsx scripts/sync-nanoka.ts && tsx scripts/link-icons.ts"
   },
   "dependencies": {
+    "@libsql/client": "latest",
+    "drizzle-orm": "latest",
     "next": "16.2.11",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "zustand": "latest"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "latest",
     "@types/node": "latest",
     "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
+    "dotenv": "latest",
+    "drizzle-kit": "latest",
+    "tailwindcss": "latest",
+    "tsx": "latest",
     "typescript": "5.9.3"
   }
 }

@@ -1,6 +1,7 @@
 .next/
 node_modules/
 out/
+AGENTS.md
 
 .env*
 !.env.example

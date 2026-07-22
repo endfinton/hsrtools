@@ -14,13 +14,59 @@ Una toolkit web en JS para el juego **Honkai: Star Rail**, con tres módulos ind
 
 | Capa | Elección |
 |---|---|
-| Framework | Next.js + (App Router) + TypeScript |
+| Framework | Next.js 16 + App Router + TypeScript |
+| Deploy | Vercel |
 | Estado | Zustand |
-| DB | PostgreSQL + Prisma |
-| Auth | NextAuth (solo panel Admin de tier list) |
+| DB | Turso/libSQL (SQLite serverless) |
+| ORM / migraciones | Drizzle ORM + Drizzle Kit |
+| Auth | Auth.js / NextAuth (solo panel Admin de tier list) |
 | Drag & drop | `dnd-kit` |
 | Gráficos | Recharts o Visx |
 | Estilos | Tailwind |
+
+### DB / deploy — actualizado con Context7
+
+- La app se despliega en **Vercel** como proyecto Next.js.
+- La base de datos será **Turso/libSQL**, no PostgreSQL.
+- El acceso a DB desde la app usará `@libsql/client/web`, compatible con Vercel serverless/edge mediante HTTP.
+- Drizzle usará dialecto `turso` y schema TypeScript en `src/db/schema.ts`.
+- Las migraciones se generan con Drizzle Kit y se guardan en `/drizzle`.
+- Variables requeridas en Vercel y local:
+  - `TURSO_DATABASE_URL`
+  - `TURSO_AUTH_TOKEN`
+
+Configuración esperada de Drizzle:
+
+```typescript
+// drizzle.config.ts
+import "dotenv/config";
+import { defineConfig } from "drizzle-kit";
+
+export default defineConfig({
+  schema: "./src/db/schema.ts",
+  out: "./drizzle",
+  dialect: "turso",
+  dbCredentials: {
+    url: process.env.TURSO_DATABASE_URL!,
+    authToken: process.env.TURSO_AUTH_TOKEN!,
+  },
+});
+```
+
+Cliente esperado para runtime en Vercel:
+
+```typescript
+// src/db/index.ts
+import { createClient } from "@libsql/client/web";
+import { drizzle } from "drizzle-orm/libsql";
+
+const client = createClient({
+  url: process.env.TURSO_DATABASE_URL!,
+  authToken: process.env.TURSO_AUTH_TOKEN!,
+});
+
+export const db = drizzle({ client });
+```
 
 ## 3. Capa de datos — CONFIRMADO
 
@@ -200,6 +246,8 @@ function statAtLevel(base: number, add: number, level: number): number {
 ## 7. Estructura de repo propuesta
 
 ```
+/drizzle
+  *.sql                    # migraciones generadas por Drizzle Kit
 /data
   characters.json
   lightcones.json
@@ -208,6 +256,9 @@ function statAtLevel(base: number, add: number, level: number): number {
 /scripts
   sync-nanoka.ts
 /src
+  /db
+    index.ts              # cliente Drizzle + Turso/libSQL para runtime
+    schema.ts             # schema SQL fuente de verdad para Drizzle
   /lib
     /types               # interfaces de este documento
     /damage-engine        # motor de cálculo de daño
