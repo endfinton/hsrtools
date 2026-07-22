@@ -953,18 +953,7 @@
   },
   {
     "id": "8001",
-    "name": "{NICKNAME}",
-    "rarity": 5,
-    "path": "Destruction",
-    "element": "Physical",
-    "icon": "https://cdn.luislluy.ovh/icons/trailblazer-destruction_icon.webp",
-    "release": 1682460000,
-    "pathIcon": "https://cdn.luislluy.ovh/icons/path_destruction.webp",
-    "elementIcon": "https://cdn.luislluy.ovh/icons/ele_physical.webp"
-  },
-  {
-    "id": "8002",
-    "name": "{NICKNAME}",
+    "name": "Trailblazer (Destruction)",
     "rarity": 5,
     "path": "Destruction",
     "element": "Physical",
@@ -975,18 +964,7 @@
   },
   {
     "id": "8003",
-    "name": "{NICKNAME}",
-    "rarity": 5,
-    "path": "Preservation",
-    "element": "Fire",
-    "icon": "https://cdn.luislluy.ovh/icons/trailblazer-preservation_icon.webp",
-    "release": 1682460000,
-    "pathIcon": "https://cdn.luislluy.ovh/icons/path_preservation.webp",
-    "elementIcon": "https://cdn.luislluy.ovh/icons/ele_fire.webp"
-  },
-  {
-    "id": "8004",
-    "name": "{NICKNAME}",
+    "name": "Trailblazer (Preservation)",
     "rarity": 5,
     "path": "Preservation",
     "element": "Fire",
@@ -997,18 +975,7 @@
   },
   {
     "id": "8005",
-    "name": "{NICKNAME}",
-    "rarity": 5,
-    "path": "Harmony",
-    "element": "Imaginary",
-    "icon": "https://cdn.luislluy.ovh/icons/trailblazer-harmony_icon.webp",
-    "release": 1715158800,
-    "pathIcon": "https://cdn.luislluy.ovh/icons/path_harmony.webp",
-    "elementIcon": "https://cdn.luislluy.ovh/icons/ele_imaginary.webp"
-  },
-  {
-    "id": "8006",
-    "name": "{NICKNAME}",
+    "name": "Trailblazer (Harmony)",
     "rarity": 5,
     "path": "Harmony",
     "element": "Imaginary",
@@ -1019,18 +986,7 @@
   },
   {
     "id": "8007",
-    "name": "{NICKNAME}",
-    "rarity": 5,
-    "path": "Remembrance",
-    "element": "Ice",
-    "icon": "https://cdn.luislluy.ovh/icons/trailblazer-remembrance_icon.webp",
-    "release": 1736935200,
-    "pathIcon": "https://cdn.luislluy.ovh/icons/path_remem.webp",
-    "elementIcon": "https://cdn.luislluy.ovh/icons/ele_ice.webp"
-  },
-  {
-    "id": "8008",
-    "name": "{NICKNAME}",
+    "name": "Trailblazer (Remembrance)",
     "rarity": 5,
     "path": "Remembrance",
     "element": "Ice",
@@ -1041,18 +997,7 @@
   },
   {
     "id": "8009",
-    "name": "{NICKNAME}",
-    "rarity": 5,
-    "path": "Elation",
-    "element": "Lightning",
-    "icon": "https://cdn.luislluy.ovh/icons/trailblazer-elation_icon.webp",
-    "release": 1776848400,
-    "pathIcon": "https://cdn.luislluy.ovh/icons/path_elation.webp",
-    "elementIcon": "https://cdn.luislluy.ovh/icons/ele_lightning.webp"
-  },
-  {
-    "id": "8010",
-    "name": "{NICKNAME}",
+    "name": "Trailblazer (Elation)",
     "rarity": 5,
     "path": "Elation",
     "element": "Lightning",
