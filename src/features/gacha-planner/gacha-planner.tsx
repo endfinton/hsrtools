@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import charactersData from "../../../data/characters.json";
 import type { CharacterSummary, DamageType } from "../../lib/types/hsr";
@@ -58,6 +59,14 @@ export function GachaPlanner() {
     <main className="min-h-screen bg-[radial-gradient(circle_at_top_left,#2a214d,transparent_32rem),linear-gradient(135deg,#080814,#111827_55%,#1e1b4b)] px-4 py-6 text-slate-50 sm:px-6 lg:px-10">
       <div className="mx-auto flex max-w-7xl flex-col gap-6">
         <header className="overflow-hidden rounded-3xl border border-white/10 bg-white/10 p-6 shadow-2xl shadow-black/30 backdrop-blur md:p-8">
+          <nav className="mb-6 flex flex-wrap gap-3 text-sm font-semibold text-slate-200">
+            <span className="rounded-full border border-cyan-300/40 bg-cyan-300/20 px-4 py-2 text-cyan-100">
+              Gacha Planner
+            </span>
+            <Link className="rounded-full border border-white/10 bg-white/10 px-4 py-2 transition hover:bg-white/20" href="/tier-list">
+              Tier List
+            </Link>
+          </nav>
           <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cyan-200">HSR Toolkit</p>
           <div className="mt-4 grid gap-6 lg:grid-cols-[1.4fr_0.8fr] lg:items-end">
             <div>

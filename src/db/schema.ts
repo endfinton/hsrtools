@@ -19,3 +19,11 @@ export const plannerCharacters = sqliteTable("planner_characters", {
   owned: integer("owned", { mode: "boolean" }).notNull().default(false),
   wishlisted: integer("wishlisted", { mode: "boolean" }).notNull().default(false),
 });
+
+export const tierLists = sqliteTable("tier_lists", {
+  id: text("id").primaryKey(),
+  patch: text("patch").notNull(),
+  rows: text("rows", { mode: "json" }).notNull(),
+  createdAt: integer("created_at", { mode: "timestamp" }).notNull(),
+  updatedAt: integer("updated_at", { mode: "timestamp" }).notNull(),
+});
