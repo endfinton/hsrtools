@@ -118,6 +118,9 @@ export function TierList({ initialSnapshot, isAdmin }: { initialSnapshot: TierLi
         <header className="overflow-hidden rounded-3xl border border-white/10 bg-white/10 p-6 shadow-2xl shadow-black/30 backdrop-blur md:p-8">
           <nav className="mb-6 flex flex-wrap gap-3 text-sm font-semibold text-slate-200">
             <Link className="rounded-full border border-white/10 bg-white/10 px-4 py-2 transition hover:bg-white/20" href="/">
+              Inicio
+            </Link>
+            <Link className="rounded-full border border-white/10 bg-white/10 px-4 py-2 transition hover:bg-white/20" href="/planner">
               Gacha Planner
             </Link>
             <span className="rounded-full border border-fuchsia-300/40 bg-fuchsia-300/20 px-4 py-2 text-fuchsia-100">

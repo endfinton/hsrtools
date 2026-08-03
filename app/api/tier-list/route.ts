@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { auth } from "../../../auth";
+import { auth, canManageTierList } from "../../../auth";
 import { getTierListSnapshot, saveTierListSnapshot } from "../../../src/features/tier-list/db";
 import { normalizeRows } from "../../../src/features/tier-list/tier-data";
 
@@ -10,7 +10,7 @@ export async function GET() {
 export async function POST(request: Request) {
   const session = await auth();
 
-  if (!session?.user) {
+  if (!canManageTierList(session)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 

@@ -1,3 +1,8 @@
+engineStrict: true
+packageManagerStrict: true
+storeDir: .pnpm-store
+confirmModulesPurge: false
+
 allowBuilds:
   esbuild: true
   sharp: true

@@ -60,6 +60,9 @@ export function GachaPlanner() {
       <div className="mx-auto flex max-w-7xl flex-col gap-6">
         <header className="overflow-hidden rounded-3xl border border-white/10 bg-white/10 p-6 shadow-2xl shadow-black/30 backdrop-blur md:p-8">
           <nav className="mb-6 flex flex-wrap gap-3 text-sm font-semibold text-slate-200">
+            <Link className="rounded-full border border-white/10 bg-white/10 px-4 py-2 transition hover:bg-white/20" href="/">
+              Inicio
+            </Link>
             <span className="rounded-full border border-cyan-300/40 bg-cyan-300/20 px-4 py-2 text-cyan-100">
               Gacha Planner
             </span>

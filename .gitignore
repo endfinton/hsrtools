@@ -1,5 +1,6 @@
 .next/
 node_modules/
+.pnpm-store/
 out/
 AGENTS.md
 .codebase-memory
