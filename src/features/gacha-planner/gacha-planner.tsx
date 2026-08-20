@@ -1,14 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
-import charactersData from "../../../data/characters.json";
 import type { CharacterSummary, DamageType } from "../../lib/types/hsr";
 import { calculateWishlistPlan, HARD_PITY } from "./calculations";
 import { useGachaPlannerStore } from "./store";
-
-const characters = charactersData as CharacterSummary[];
-const fiveStarCharacters = characters.filter((character) => character.rarity === 5);
 
 const elements: Array<"all" | DamageType> = [
   "all",
@@ -21,7 +18,13 @@ const elements: Array<"all" | DamageType> = [
   "Imaginary",
 ];
 
-export function GachaPlanner() {
+export function GachaPlanner({
+  characters,
+  overriddenCharacterIds,
+}: {
+  characters: CharacterSummary[];
+  overriddenCharacterIds: string[];
+}) {
   const [search, setSearch] = useState("");
   const [elementFilter, setElementFilter] = useState<(typeof elements)[number]>("all");
 
@@ -32,11 +35,14 @@ export function GachaPlanner() {
   const guaranteed = useGachaPlannerStore((state) => state.guaranteed);
   const toggleOwned = useGachaPlannerStore((state) => state.toggleOwned);
   const toggleWishlist = useGachaPlannerStore((state) => state.toggleWishlist);
+  const setOwnedCharacterIds = useGachaPlannerStore((state) => state.setOwnedCharacterIds);
   const setCurrentTickets = useGachaPlannerStore((state) => state.setCurrentTickets);
   const setPity = useGachaPlannerStore((state) => state.setPity);
   const setGuaranteed = useGachaPlannerStore((state) => state.setGuaranteed);
   const resetPlanner = useGachaPlannerStore((state) => state.resetPlanner);
 
+  const fiveStarCharacters = characters.filter((character) => character.rarity === 5);
+  const overriddenSet = new Set(overriddenCharacterIds);
   const ownedSet = new Set(ownedCharacterIds);
   const wishlistSet = new Set(wishlistCharacterIds);
   const ownedFiveStarCount = fiveStarCharacters.filter((character) => ownedSet.has(character.id)).length;
@@ -99,6 +105,8 @@ export function GachaPlanner() {
           <PlanSummary targetCount={wishlistCharacters.length} plan={plan} />
         </section>
 
+        <ImportJsonPanel currentOwnedCharacterIds={ownedCharacterIds} setOwnedCharacterIds={setOwnedCharacterIds} />
+
         <section className="rounded-3xl border border-white/10 bg-slate-950/55 p-5">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
@@ -145,6 +153,7 @@ export function GachaPlanner() {
                 key={character.id}
                 character={character}
                 owned={ownedSet.has(character.id)}
+                overridden={overriddenSet.has(character.id)}
                 wishlisted={wishlistSet.has(character.id)}
                 onToggleOwned={() => toggleOwned(character.id)}
                 onToggleWishlist={() => toggleWishlist(character.id)}
@@ -154,6 +163,173 @@ export function GachaPlanner() {
         </section>
       </div>
     </main>
+  );
+}
+
+interface ImportPreview {
+  roster?: {
+    added: Array<{ characterId: string; eidolon: number; level?: number; lightConeId?: string }>;
+    changed: Array<{
+      before: { characterId: string; eidolon: number; level?: number; lightConeId?: string };
+      after: { characterId: string; eidolon: number; level?: number; lightConeId?: string };
+    }>;
+    unchanged: Array<{ characterId: string; eidolon: number; level?: number; lightConeId?: string }>;
+  };
+  corrections?: {
+    sections: string[];
+    replacesExisting: boolean;
+  };
+}
+
+function ImportJsonPanel(props: {
+  currentOwnedCharacterIds: string[];
+  setOwnedCharacterIds: (characterIds: string[]) => void;
+}) {
+  const router = useRouter();
+  const [preview, setPreview] = useState<ImportPreview | null>(null);
+  const [status, setStatus] = useState("");
+  const [errors, setErrors] = useState<string[]>([]);
+  const [pending, setPending] = useState(false);
+
+  async function importFile(file: File) {
+    setPending(true);
+    setStatus("");
+    setErrors([]);
+
+    try {
+      if (file.size > 512 * 1024) {
+        setErrors(["El archivo supera el límite de 512 KiB."]);
+        return;
+      }
+
+      const payload = JSON.parse(await file.text()) as unknown;
+      const response = await fetch("/api/import-json", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ dryRun: false, payload }),
+      });
+      const result = (await response.json()) as { preview?: ImportPreview; errors?: string[]; error?: string; applied?: boolean };
+
+      if (!response.ok) {
+        setErrors(result.errors ?? [result.error ?? "No se pudo importar el JSON."]);
+        return;
+      }
+
+      setPreview(result.preview ?? null);
+      setStatus(`Import aplicado correctamente desde ${file.name}.`);
+
+      const importedIds = result.preview?.roster
+        ? [...result.preview.roster.added, ...result.preview.roster.changed.map((change) => change.after), ...result.preview.roster.unchanged].map(
+            (character) => character.characterId,
+          )
+        : [];
+      props.setOwnedCharacterIds([...props.currentOwnedCharacterIds, ...importedIds]);
+      router.refresh();
+    } catch {
+      setErrors(["JSON mal formado."]);
+    } finally {
+      setPending(false);
+    }
+  }
+
+  async function exportBackup() {
+    setPending(true);
+    setStatus("");
+    setErrors([]);
+
+    try {
+      const response = await fetch("/api/import-json");
+      const result = (await response.json()) as unknown;
+
+      if (!response.ok) {
+        const errorResult = result as { error?: string };
+        setErrors([errorResult.error ?? "No se pudo exportar el backup."]);
+        return;
+      }
+
+      const blob = new Blob([JSON.stringify(result, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "hsr-tools-backup.json";
+      link.click();
+      URL.revokeObjectURL(url);
+      setPreview(null);
+      setStatus("Backup exportado como hsr-tools-backup.json.");
+    } finally {
+      setPending(false);
+    }
+  }
+
+  return (
+    <section className="rounded-3xl border border-violet-200/20 bg-violet-200/10 p-5">
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <p className="text-xs uppercase tracking-[0.25em] text-violet-200/80">Import / Export</p>
+          <h2 className="mt-1 text-xl font-bold">Roster, progreso y correcciones</h2>
+          <p className="mt-2 max-w-3xl text-sm text-slate-300">
+            Selecciona un JSON interno con `version`, `roster` y/o `corrections`. Las correcciones se guardan como override separado; los datos base de `data/*.json` no se modifican.
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-3">
+          <label
+            className={`rounded-full bg-cyan-300 px-4 py-2 text-sm font-black text-slate-950 transition hover:bg-cyan-200 ${
+              pending ? "cursor-not-allowed opacity-60" : "cursor-pointer"
+            }`}
+          >
+            Seleccionar e importar JSON
+            <input
+              accept="application/json,.json"
+              className="sr-only"
+              disabled={pending}
+              type="file"
+              onChange={(event) => {
+                const file = event.target.files?.[0];
+                event.currentTarget.value = "";
+
+                if (file) {
+                  void importFile(file);
+                }
+              }}
+            />
+          </label>
+          <button
+            className="rounded-full border border-white/10 bg-white/10 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:bg-white/20 disabled:opacity-60"
+            disabled={pending}
+            type="button"
+            onClick={exportBackup}
+          >
+            Exportar backup
+          </button>
+        </div>
+      </div>
+
+      {status ? <p className="mt-3 text-sm font-semibold text-emerald-100">{status}</p> : null}
+      {errors.length ? (
+        <div className="mt-3 rounded-2xl border border-red-300/30 bg-red-300/10 p-3 text-sm text-red-100">
+          {errors.map((error) => (
+            <p key={error}>{error}</p>
+          ))}
+        </div>
+      ) : null}
+      {preview ? <ImportPreviewSummary preview={preview} /> : null}
+    </section>
+  );
+}
+
+function ImportPreviewSummary({ preview }: { preview: ImportPreview }) {
+  return (
+    <div className="mt-4 grid gap-3 text-sm sm:grid-cols-4">
+      <SummaryCard label="Altas" value={(preview.roster?.added.length ?? 0).toString()} />
+      <SummaryCard label="Cambios" value={(preview.roster?.changed.length ?? 0).toString()} />
+      <SummaryCard label="Iguales" value={(preview.roster?.unchanged.length ?? 0).toString()} />
+      <SummaryCard label="Overrides" value={preview.corrections?.sections.length.toString() ?? "0"} />
+      {preview.corrections?.replacesExisting ? (
+        <p className="sm:col-span-4 rounded-2xl border border-amber-300/30 bg-amber-300/10 p-3 text-amber-100">
+          Este import reemplazará correcciones locales existentes.
+        </p>
+      ) : null}
+    </div>
   );
 }
 
@@ -258,6 +434,7 @@ function CharacterPill({ character }: { character: CharacterSummary }) {
 function CharacterCard(props: {
   character: CharacterSummary;
   owned: boolean;
+  overridden: boolean;
   wishlisted: boolean;
   onToggleOwned: () => void;
   onToggleWishlist: () => void;
@@ -284,6 +461,11 @@ function CharacterCard(props: {
             {props.character.rarity}★
           </span>
         </div>
+        {props.overridden ? (
+          <p className="mt-2 rounded-full border border-violet-300/30 bg-violet-300/10 px-3 py-1 text-xs font-semibold text-violet-100">
+            Override local
+          </p>
+        ) : null}
         <div className="mt-3 flex items-center gap-2">
           {props.character.elementIcon ? (
             <img
