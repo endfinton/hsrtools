@@ -6,6 +6,7 @@ import { clampInteger, HARD_PITY } from "./calculations";
 interface GachaPlannerActions {
   toggleOwned: (characterId: string) => void;
   toggleWishlist: (characterId: string) => void;
+  setOwnedCharacterIds: (characterIds: string[]) => void;
   setCurrentTickets: (value: number) => void;
   setPity: (value: number) => void;
   setGuaranteed: (value: boolean) => void;
@@ -38,8 +39,8 @@ export const useGachaPlannerStore = create<GachaPlannerStore>()(
         set((state) => ({
           wishlistCharacterIds: toggleId(state.wishlistCharacterIds, characterId),
         })),
-      setCurrentTickets: (value) =>
-        set({ currentTickets: clampInteger(value, 0, Number.MAX_SAFE_INTEGER) }),
+      setOwnedCharacterIds: (characterIds) => set({ ownedCharacterIds: Array.from(new Set(characterIds)) }),
+      setCurrentTickets: (value) => set({ currentTickets: clampInteger(value, 0, Number.MAX_SAFE_INTEGER) }),
       setPity: (value) => set({ pity: clampInteger(value, 0, HARD_PITY) }),
       setGuaranteed: (value) => set({ guaranteed: value }),
       resetPlanner: () => set(initialState),
