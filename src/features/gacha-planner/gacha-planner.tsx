@@ -197,8 +197,8 @@ function ImportJsonPanel(props: {
     setErrors([]);
 
     try {
-      if (file.size > 512 * 1024) {
-        setErrors(["El archivo supera el límite de 512 KiB."]);
+      if (file.size > 5 * 1024 * 1024) {
+        setErrors(["El archivo supera el límite de 5 MiB."]);
         return;
       }
 

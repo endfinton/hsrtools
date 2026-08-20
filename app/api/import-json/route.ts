@@ -4,7 +4,7 @@ import { auth } from "../../../auth";
 import { applyImportPayload, exportImportPayload, getImportPreview } from "../../../src/lib/import-json/db";
 import { parseImportPayload } from "../../../src/lib/import-json/schema";
 
-const maxImportBytes = 512 * 1024;
+const maxImportBytes = 5 * 1024 * 1024;
 
 function authenticatedUserId(session: Session | null) {
   return session?.user?.id || undefined;
@@ -31,7 +31,7 @@ export async function POST(request: Request) {
 
   const rawBody = await request.text();
   if (new TextEncoder().encode(rawBody).length > maxImportBytes) {
-    return NextResponse.json({ errors: ["El archivo supera el límite de 512 KiB."] }, { status: 413 });
+    return NextResponse.json({ errors: ["El archivo supera el límite de 5 MiB."] }, { status: 413 });
   }
 
   let body: unknown;
