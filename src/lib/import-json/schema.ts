@@ -7,6 +7,9 @@ export interface ImportRosterCharacter {
 
 export interface ImportPayload {
   version: 1;
+  planner?: {
+    currentTickets?: number;
+  };
   roster?: {
     characters: ImportRosterCharacter[];
   };
@@ -38,7 +41,7 @@ function boundedInteger(value: unknown, min: number, max: number) {
   return typeof value === "number" && Number.isInteger(value) && value >= min && value <= max ? value : undefined;
 }
 
-function parseRosterCharacter(value: unknown, index: number, errors: string[]) {
+function parseRosterCharacter(value: unknown, index: number, errors: string[]): ImportRosterCharacter | undefined {
   if (!isObject(value)) {
     errors.push(`roster.characters[${index}] debe ser un objeto.`);
     return undefined;
@@ -106,6 +109,24 @@ function parseCorrections(value: unknown, errors: string[]) {
   return Object.keys(corrections).length ? corrections : undefined;
 }
 
+function parsePlanner(value: unknown, errors: string[]) {
+  if (value === undefined) {
+    return undefined;
+  }
+
+  if (!isObject(value)) {
+    errors.push("planner debe ser un objeto.");
+    return undefined;
+  }
+
+  const currentTickets = value.currentTickets === undefined ? undefined : boundedInteger(value.currentTickets, 0, Number.MAX_SAFE_INTEGER);
+  if (value.currentTickets !== undefined && currentTickets === undefined) {
+    errors.push("planner.currentTickets debe ser un entero positivo.");
+  }
+
+  return currentTickets === undefined ? undefined : { currentTickets };
+}
+
 export function parseImportPayload(value: unknown): ImportParseResult {
   const errors: string[] = [];
 
@@ -143,10 +164,11 @@ export function parseImportPayload(value: unknown): ImportParseResult {
     }
   }
 
+  const planner = parsePlanner(value.planner, errors);
   const corrections = parseCorrections(value.corrections, errors);
 
-  if (!roster && !corrections) {
-    errors.push("El import debe incluir roster o corrections.");
+  if (!planner && !roster && !corrections) {
+    errors.push("El import debe incluir planner, roster o corrections.");
   }
 
   if (errors.length) {
@@ -156,6 +178,7 @@ export function parseImportPayload(value: unknown): ImportParseResult {
   return {
     payload: {
       version: 1,
+      ...(planner ? { planner } : {}),
       ...(roster ? { roster } : {}),
       ...(corrections ? { corrections } : {}),
     },

@@ -13,6 +13,9 @@ export interface ImportRosterDiff {
 }
 
 export interface ImportPreview {
+  planner?: {
+    currentTickets?: number;
+  };
   roster?: ImportRosterDiff;
   corrections?: {
     sections: string[];
@@ -44,6 +47,10 @@ async function ensureUserExists(userId: string) {
 
 export async function getImportPreview(userId: string, payload: ImportPayload): Promise<ImportPreview> {
   const preview: ImportPreview = {};
+
+  if (payload.planner) {
+    preview.planner = payload.planner;
+  }
 
   if (payload.roster) {
     const rows = await db.select().from(userRoster).where(eq(userRoster.userId, userId));
@@ -113,19 +120,21 @@ export async function applyImportPayload(userId: string, payload: ImportPayload)
     }
   }
 
-  if (payload.corrections) {
+  if (payload.planner || payload.corrections) {
     await db
       .insert(userPreferences)
       .values({
         userId,
-        importedCorrections: payload.corrections,
+        ...(payload.planner ? { plannerState: payload.planner } : {}),
+        ...(payload.corrections ? { importedCorrections: payload.corrections } : {}),
         createdAt: now,
         updatedAt: now,
       })
       .onConflictDoUpdate({
         target: userPreferences.userId,
         set: {
-          importedCorrections: payload.corrections,
+          ...(payload.planner ? { plannerState: payload.planner } : {}),
+          ...(payload.corrections ? { importedCorrections: payload.corrections } : {}),
           updatedAt: now,
         },
       });
@@ -135,15 +144,17 @@ export async function applyImportPayload(userId: string, payload: ImportPayload)
 export async function exportImportPayload(userId: string): Promise<ImportPayload> {
   const rosterRows = await db.select().from(userRoster).where(eq(userRoster.userId, userId));
   const [preferences] = await db
-    .select({ importedCorrections: userPreferences.importedCorrections })
+    .select({ plannerState: userPreferences.plannerState, importedCorrections: userPreferences.importedCorrections })
     .from(userPreferences)
     .where(eq(userPreferences.userId, userId))
     .limit(1);
 
+  const planner = preferences?.plannerState as ImportPayload["planner"] | null | undefined;
   const corrections = preferences?.importedCorrections as ImportPayload["corrections"] | null | undefined;
 
   return {
     version: 1,
+    ...(planner ? { planner } : {}),
     roster: { characters: rosterRows.map(normalizeRosterRow) },
     ...(corrections ? { corrections } : {}),
   };

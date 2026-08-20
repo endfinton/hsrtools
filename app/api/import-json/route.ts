@@ -2,12 +2,21 @@ import { NextResponse } from "next/server";
 import type { Session } from "next-auth";
 import { auth } from "../../../auth";
 import { applyImportPayload, exportImportPayload, getImportPreview } from "../../../src/lib/import-json/db";
+import { parseReliquaryArchiverPayload } from "../../../src/lib/import-json/reliquary";
 import { parseImportPayload } from "../../../src/lib/import-json/schema";
 
 const maxImportBytes = 5 * 1024 * 1024;
 
 function authenticatedUserId(session: Session | null) {
   return session?.user?.id || undefined;
+}
+
+function parseSupportedPayload(value: unknown) {
+  if (value && typeof value === "object" && "source" in value && (value as { source?: unknown }).source === "reliquary_archiver") {
+    return parseReliquaryArchiverPayload(value);
+  }
+
+  return parseImportPayload(value);
 }
 
 export async function GET() {
@@ -43,7 +52,7 @@ export async function POST(request: Request) {
 
   const dryRun = body && typeof body === "object" && "dryRun" in body ? Boolean((body as { dryRun?: unknown }).dryRun) : true;
   const candidate = body && typeof body === "object" && "payload" in body ? (body as { payload?: unknown }).payload : body;
-  const parsed = parseImportPayload(candidate);
+  const parsed = parseSupportedPayload(candidate);
 
   if (!parsed.payload) {
     return NextResponse.json({ errors: parsed.errors }, { status: 400 });
@@ -55,5 +64,5 @@ export async function POST(request: Request) {
     await applyImportPayload(userId, parsed.payload);
   }
 
-  return NextResponse.json({ applied: !dryRun, preview });
+  return NextResponse.json({ applied: !dryRun, planner: parsed.payload.planner, preview });
 }

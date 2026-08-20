@@ -167,6 +167,9 @@ export function GachaPlanner({
 }
 
 interface ImportPreview {
+  planner?: {
+    currentTickets?: number;
+  };
   roster?: {
     added: Array<{ characterId: string; eidolon: number; level?: number; lightConeId?: string }>;
     changed: Array<{
@@ -208,7 +211,13 @@ function ImportJsonPanel(props: {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ dryRun: false, payload }),
       });
-      const result = (await response.json()) as { preview?: ImportPreview; errors?: string[]; error?: string; applied?: boolean };
+      const result = (await response.json()) as {
+        planner?: { currentTickets?: number };
+        preview?: ImportPreview;
+        errors?: string[];
+        error?: string;
+        applied?: boolean;
+      };
 
       if (!response.ok) {
         setErrors(result.errors ?? [result.error ?? "No se pudo importar el JSON."]);
@@ -224,6 +233,9 @@ function ImportJsonPanel(props: {
           )
         : [];
       props.setOwnedCharacterIds([...props.currentOwnedCharacterIds, ...importedIds]);
+      if (typeof result.planner?.currentTickets === "number") {
+        useGachaPlannerStore.getState().setCurrentTickets(result.planner.currentTickets);
+      }
       router.refresh();
     } catch {
       setErrors(["JSON mal formado."]);
@@ -320,10 +332,10 @@ function ImportJsonPanel(props: {
 function ImportPreviewSummary({ preview }: { preview: ImportPreview }) {
   return (
     <div className="mt-4 grid gap-3 text-sm sm:grid-cols-4">
+      <SummaryCard label="Tickets" value={preview.planner?.currentTickets?.toString() ?? "0"} />
       <SummaryCard label="Altas" value={(preview.roster?.added.length ?? 0).toString()} />
       <SummaryCard label="Cambios" value={(preview.roster?.changed.length ?? 0).toString()} />
       <SummaryCard label="Iguales" value={(preview.roster?.unchanged.length ?? 0).toString()} />
-      <SummaryCard label="Overrides" value={preview.corrections?.sections.length.toString() ?? "0"} />
       {preview.corrections?.replacesExisting ? (
         <p className="sm:col-span-4 rounded-2xl border border-amber-300/30 bg-amber-300/10 p-3 text-amber-100">
           Este import reemplazará correcciones locales existentes.
