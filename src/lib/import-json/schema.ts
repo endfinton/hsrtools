@@ -69,7 +69,12 @@ function parseRosterCharacter(value: unknown, index: number, errors: string[]) {
     return undefined;
   }
 
-  return { characterId, eidolon, level, lightConeId } satisfies ImportRosterCharacter;
+  return {
+    characterId,
+    eidolon,
+    ...(level === undefined ? {} : { level }),
+    ...(lightConeId === undefined ? {} : { lightConeId }),
+  } satisfies ImportRosterCharacter;
 }
 
 function parseCorrections(value: unknown, errors: string[]) {
