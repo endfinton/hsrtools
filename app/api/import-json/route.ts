@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
+import type { Session } from "next-auth";
 import { auth } from "../../../auth";
 import { applyImportPayload, exportImportPayload, getImportPreview } from "../../../src/lib/import-json/db";
 import { parseImportPayload } from "../../../src/lib/import-json/schema";
 
 const maxImportBytes = 512 * 1024;
 
-function authenticatedUserId(session: Awaited<ReturnType<typeof auth>>) {
+function authenticatedUserId(session: Session | null) {
   return session?.user?.id || undefined;
 }
 
